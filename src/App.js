@@ -5,71 +5,44 @@ import './App.css';
 class FlatList extends React.Component {
     constructor(props) {
         super(props);
+
         this.state = {
-            "id": 1037,
-            "name": "1401",
-            "type": "Apartment",
-            "residentialUnitGroupId": 1010,
-            "floor": 1,
-            "layoutType": "F1",
-            "deadlines": [
-                {
-                    "Name": "Interier",
-                    "Date": "2019-12-12T12:00:00.00+00:00",
-                    "Status": "Sent"
-                },
-                {
-                    "Name": "Exterior",
-                    "Date": "2020-2-10T11:00:00.00+00:00",
-                    "Status": "In progress"
-                },
-                {
-                    "Name": "Exterior",
-                    "Date": "2020-2-10T11:00:00.00+00:00",
-                    "Status": "Not sent"
-                }
-            ],
-            "buyers": [
-                {
-                    "id": 2,
-                    "firstName": "Yuval",
-                    "lastName": "Montuelle",
-                    "email": "yuval@bygr.io",
-                    "displayName": "Yuval Montuelle",
-                    "phoneNumber": "92869069",
-                    "lastVisitDate": "2019-11-14T11:15:47.5614882+00:00"
-                }
-            ]
+            data: [],
         }
     }
 
+    componentDidMount() {
+        this.getData();
+    }
+
+    getData() {
+        fetch(`http://localhost:8000/data`)
+            .then(responce => responce.json())
+            .then(data => {
+                this.setState({data});
+            });
+    }
+
     render() {
+        const { data } = this.state;
         return (
             <div className="flat-list">
-                <FlatItem></FlatItem>
-
-                {/*{this.state.map(item => (*/}
-                {/*    <FlatItem data={item}></FlatItem>*/}
-                {/*))}*/}
+                {data.map(item => <FlatItem data={item} />)}
             </div>
         )
     }
 }
 
 class FlatItem extends React.Component {
-    constructor(props) {
-        super(props.data);
-        console.log(props.data);
-    }
-
     render() {
+        const { data } = this.props;
         return (
             <div className="flat-item">
                 <div className="item-title">Building A - H0102</div>
                 <div className="item-info">
                     <div style={{width: '9.8%'}}>
                         <div className="info-subtitle">Floor</div>
-                        <div>1</div>
+                        <div>{data.floor}</div>
                         <div className="info-subtitle">Unit type</div>
                         <div>Apartment</div>
                         <div className="info-subtitle">Type</div>
@@ -100,14 +73,6 @@ class FlatItem extends React.Component {
 //     this.getData();
 // }
 //
-// getData() {
-//     fetch(`http://localhost:8000/data`)
-//         .then(responce => responce.json())
-//         .then(data => {
-//             console.log(data);
-//             debugger;
-//         });
-// }
 //
 // getDataByFloor(floor) {
 //     fetch(`http://localhost:8000/buyer-info/${floor}`)
