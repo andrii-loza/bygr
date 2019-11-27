@@ -1,5 +1,5 @@
 import React from "react";
-
+import  "./FlatList.css"
 import { FlatItem } from '../index';
 
 class FlatList extends React.Component {
@@ -25,7 +25,7 @@ class FlatList extends React.Component {
     return (
       <div className="flat-list">
         {
-          data.map(item => <FlatItem data={item} />)
+          data.map((item, index) => <FlatItem data={item} key={index} />)
         }
       </div>
     )
