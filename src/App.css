@@ -1,22 +1,41 @@
-/*.App {*/
-  /*text-align: center;*/
-/*}*/
+* {
+    color: #1F222A;
+    font-family: Roboto, sans-serif;
+}
+.flat-list {
+    padding: 18px 40px;
+}
 
-/*.App-logo {*/
-  /*height: 40vmin;*/
-/*}*/
+.flat-item {
+    width: 1203px;
+}
 
-/*.App-header {*/
-  /*background-color: #282c34;*/
-  /*min-height: 100vh;*/
-  /*display: flex;*/
-  /*flex-direction: column;*/
-  /*align-items: center;*/
-  /*justify-content: center;*/
-  /*font-size: calc(10px + 2vmin);*/
-  /*color: white;*/
-/*}*/
+.flat-item:last-child {
+    margin-bottom: 15px;
+}
 
-/*.App-link {*/
-  /*color: #09d3ac;*/
-/*}*/
+.flat-item:not(:last-child) {
+    margin-bottom: 38px;
+}
+
+.item-title {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 1.16;
+    margin-bottom: 10px;
+}
+
+.item-info {
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
+    border-radius: 4px;
+    padding: 15px 23px;
+    display: flex;
+    font-size: 14px;
+    line-height: 1.7;
+}
+
+.info-subtitle {
+    color: #747474;
+    font-size: 12px;
+    line-height: 2;
+}
