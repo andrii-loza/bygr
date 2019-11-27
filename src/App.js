@@ -48,8 +48,8 @@ class FlatList extends React.Component {
             <div className="flat-list">
                 <FlatItem></FlatItem>
 
-                {/*{this.props.map(item => (*/}
-                {/*    <FlatItem props={item}></FlatItem>*/}
+                {/*{this.state.map(item => (*/}
+                {/*    <FlatItem data={item}></FlatItem>*/}
                 {/*))}*/}
             </div>
         )
@@ -58,7 +58,8 @@ class FlatList extends React.Component {
 
 class FlatItem extends React.Component {
     constructor(props) {
-        super(props);
+        super(props.data);
+        console.log(props.data);
     }
 
     render() {
