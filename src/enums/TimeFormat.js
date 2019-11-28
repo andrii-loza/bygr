@@ -1,6 +1,6 @@
-const TimeFormatEnum = {
+const TimeFormat = {
   LastLogin: 'LastLogin',
   DeadlineDate: 'DeadlineDate',
 };
 
-export { TimeFormatEnum };
+export { TimeFormat };
