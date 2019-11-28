@@ -75,7 +75,6 @@ class FlatItem extends React.PureComponent {
                 <div key={index}>
                   <div>{item.displayName}</div>
                   <div> {this.formatDate(item['lastVisitDate'], TimeFormatEnum.LastLogin)}</div>
-                  {/*<div> {this.formatDate(item.lastVisitDate)}</div>*/}
                 </div>
               )
             }
