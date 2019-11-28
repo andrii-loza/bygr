@@ -1,10 +1,10 @@
 import React from "react";
 import Select from 'react-select';
-import "./FlatList.css"
+import "./FlatsList.css"
 
 import {FlatItem} from '../index';
 
-class FlatList extends React.Component {
+class FlatsList extends React.Component {
   state = {
     env: 'http://localhost:3000/',
     data: [],
@@ -23,12 +23,12 @@ class FlatList extends React.Component {
     });
   };
 
-  handleChange = selectedOption => {
+  filterFlatsList = selectedOption => {
     const {data} = this.state;
 
     if (!selectedOption) this.setState({filteredData: data, selectedOption});
     else {
-      const editedData = [...data].filter(item => item['layoutType'] === selectedOption.value);
+      const editedData = data.filter(item => item['layoutType'] === selectedOption.value);
       this.setState({filteredData: editedData, selectedOption});
     }
   };
@@ -54,19 +54,19 @@ class FlatList extends React.Component {
     return (
       <div className="flat-list">
         <Select
-          className={'select'}
+          className="select"
           value={selectedOption}
-          onChange={this.handleChange}
-          placeholder={'Filter on type'}
-          isClearable={'true'}
+          onChange={this.filterFlatsList}
+          placeholder="Filter on type"
+          isClearable
           options={options}
         />
         <div className="list">
-          {filteredData.map((item, index) => <FlatItem data={item} key={index}/>)}
+          {filteredData.map((item, index) => <FlatItem flat={item} key={index}/>)}
         </div>
       </div>
     )
   }
 }
 
-export {FlatList};
+export {FlatsList};

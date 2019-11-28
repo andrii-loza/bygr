@@ -37,7 +37,7 @@
     line-height: 2;
 }
 
-#info-status {
+.info-status {
     width: 16px;
     height: 16px;
     border-radius: 24px;
@@ -67,7 +67,8 @@
     }
 
     .item-info > div {
-        margin: 0 15px 0 0;
+        margin-bottom: 0 !important;
+        margin-right: 15px;
     }
 
     .xs-width {
