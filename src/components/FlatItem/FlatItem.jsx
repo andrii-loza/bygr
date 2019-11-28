@@ -51,7 +51,7 @@ class FlatItem extends React.PureComponent {
             <div className="info-subtitle">Unit type</div>
             <div>{data.type}</div>
             <div className="info-subtitle">Type</div>
-            <div>A1</div>
+            <div>{data['layoutType']}</div>
           </div>
           {
             data.buyers.map((item, index) => (
