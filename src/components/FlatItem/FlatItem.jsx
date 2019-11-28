@@ -7,12 +7,15 @@ class FlatItem extends React.PureComponent {
     return {backgroundColor: '#B8DE91'}
   }
 
-  formatDate(date) {
-  }
+  formatDate = date => {
+    const split = date.split(/\D+/);
+    const dateFormat = new Date(Date.UTC(split[0], --split[1], split[2], split[3], split[4], split[5], split[6]));
+    return `${dateFormat.getDay()}.${dateFormat.getMonth()}.${dateFormat.getFullYear()}`;
+  };
 
   render() {
     const {data} = this.props;
-    console.log(data);
+
     return (
       <div className="flat-item">
         <div className="item-title">Building A - H0102</div>
@@ -57,7 +60,7 @@ class FlatItem extends React.PureComponent {
             {
               data.deadlines.map((item, index) =>
                 <div className="d-flex align-center" key={index}>
-                  <div>Deadline {index + 1} ({item.Date}) :</div>
+                  <div>Deadline {index + 1} ({this.formatDate(item['Date'])}) :</div>
                   <div id="info-status" style={this.getDeadlineStatusBgColor(item.Status)}/>
                   <div>{item.Status}</div>
                 </div>
