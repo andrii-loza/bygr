@@ -49,8 +49,8 @@ class FlatList extends React.Component {
             className={'select'}
             value={selectedOption}
             onChange={this.handleChange}
-            placeholder='Filter on type'
-            isClearable='true'
+            placeholder={'Filter on type'}
+            isClearable={'true'}
             options={options}
           />
           <div className="list">
