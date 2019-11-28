@@ -33,7 +33,7 @@ class FlatsList extends React.Component {
     }
   };
 
-  async getData() {
+  getData() {
     let url;
     if(this.state.env === window.location.href) url = '/data';
     else {
@@ -41,7 +41,7 @@ class FlatsList extends React.Component {
       url = '/buyer-info/' + split[split.length - 1];
     }
 
-    await fetch(url)
+    fetch(url)
       .then(response => response.json())
       .then(data => {
         this.setState({data: data, options: this.getOptions(data), filteredData: data});
