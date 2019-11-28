@@ -8,13 +8,13 @@ class FlatItem extends React.PureComponent {
   getDeadlineStatusBgColor = status => {
     switch (status) {
       case DeadlineStatusEnum.Sent: {
-        return { backgroundColor: '#B8DE91' };
-      }
-      case DeadlineStatusEnum.InProgress: {
-        return { backgroundColor: '#FB9683' };
+        return { backgroundColor: '#B8DE91' }
       }
       case DeadlineStatusEnum.NotSent: {
-        return { backgroundColor: '#FBD277' };
+        return { backgroundColor: '#FB9683' }
+      }
+      case DeadlineStatusEnum.InProgress: {
+        return { backgroundColor: '#FBD277' }
       }
       default:
         return { backgroundColor: 'transparent' };
