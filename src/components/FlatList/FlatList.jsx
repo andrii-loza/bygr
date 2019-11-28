@@ -6,6 +6,7 @@ import {FlatItem} from '../index';
 
 class FlatList extends React.Component {
   state = {
+    env: 'http://localhost:3000/',
     data: [],
     filteredData: [],
     options: [],
@@ -23,17 +24,24 @@ class FlatList extends React.Component {
   };
 
   handleChange = selectedOption => {
-    const { data } = this.state;
+    const {data} = this.state;
 
-    if(!selectedOption) this.setState({filteredData: data, selectedOption});
+    if (!selectedOption) this.setState({filteredData: data, selectedOption});
     else {
       const editedData = [...data].filter(item => item['layoutType'] === selectedOption.value);
       this.setState({filteredData: editedData, selectedOption});
     }
   };
 
-  getData() {
-    fetch(`http://localhost:8000/data`)
+  async getData() {
+    let url;
+    if(this.state.env === window.location.href) url = '/data';
+    else {
+      const splited = window.location.href.split('/');
+      url = '/buyer-info/' + splited[splited.length - 1];
+    }
+
+    await fetch(url)
       .then(response => response.json())
       .then(data => {
         this.setState({data: data, options: this.getOptions(data), filteredData: data});
@@ -44,19 +52,19 @@ class FlatList extends React.Component {
     const {options, selectedOption, filteredData} = this.state;
 
     return (
-        <div className="flat-list">
-          <Select
-            className={'select'}
-            value={selectedOption}
-            onChange={this.handleChange}
-            placeholder={'Filter on type'}
-            isClearable={'true'}
-            options={options}
-          />
-          <div className="list">
-            {filteredData.map((item, index) => <FlatItem data={item} key={index}/>)}
-          </div>
+      <div className="flat-list">
+        <Select
+          className={'select'}
+          value={selectedOption}
+          onChange={this.handleChange}
+          placeholder={'Filter on type'}
+          isClearable={'true'}
+          options={options}
+        />
+        <div className="list">
+          {filteredData.map((item, index) => <FlatItem data={item} key={index}/>)}
         </div>
+      </div>
     )
   }
 }
