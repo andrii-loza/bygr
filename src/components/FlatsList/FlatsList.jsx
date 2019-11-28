@@ -10,7 +10,9 @@ class FlatsList extends React.Component {
     data: [],
     filteredData: [],
     options: [],
-    selectedOption: null,
+    floors: [{ label: 'Floor 1', value: 1 }, { label: 'Floor 2', value: 2 }],
+    selectedFlatType: null,
+    selectedFloor: null,
   };
 
   componentDidMount() {
@@ -23,22 +25,26 @@ class FlatsList extends React.Component {
     });
   };
 
-  filterFlatsList = selectedOption => {
+  filterByFloor = selectedFloor => {
+    this.setState({selectedFloor, selectedFlatType: null});
+    this.getData(selectedFloor ? selectedFloor.value : null);
+  }
+
+  filterFlatsList = selectedFlatType => {
     const {data} = this.state;
 
-    if (!selectedOption) this.setState({filteredData: data, selectedOption});
+    if (!selectedFlatType) this.setState({filteredData: data, selectedFlatType});
     else {
-      const editedData = data.filter(item => item['layoutType'] === selectedOption.value);
-      this.setState({filteredData: editedData, selectedOption});
+      const editedData = data.filter(item => item['layoutType'] === selectedFlatType.value);
+      this.setState({filteredData: editedData, selectedFlatType});
     }
   };
 
-  getData() {
-    let url;
-    if(this.state.env === window.location.href) url = '/data';
-    else {
-      const split = window.location.href.split('/');
-      url = '/buyer-info/' + split[split.length - 1];
+  getData(floor) {
+    let url = '/buyer-info';
+
+    if(floor) {
+      url += '?floor=' + floor;
     }
 
     fetch(url)
@@ -49,18 +55,28 @@ class FlatsList extends React.Component {
   }
 
   render() {
-    const {options, selectedOption, filteredData} = this.state;
+    const {options, selectedFlatType, filteredData, floors, selectedFloor} = this.state;
 
     return (
       <div className="flat-list">
-        <Select
-          className="select"
-          value={selectedOption}
-          onChange={this.filterFlatsList}
-          placeholder="Filter on type"
-          isClearable
-          options={options}
-        />
+        <div className="d-flex">
+          <Select
+            className="select"
+            value={selectedFloor}
+            onChange={this.filterByFloor}
+            placeholder="Filter by floor"
+            isClearable
+            options={floors}
+          />
+          <Select
+            className="select"
+            value={selectedFlatType}
+            onChange={this.filterFlatsList}
+            placeholder="Filter by type"
+            isClearable
+            options={options}
+          />
+        </div>
         <div className="list">
           {filteredData.map((item, index) => <FlatItem flat={item} key={index}/>)}
         </div>
