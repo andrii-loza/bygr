@@ -1,8 +1,8 @@
 import React from 'react';
 
 import './App.css';
-import { FlatList } from './components/index';
+import { FlatsList } from './components/index';
 
 export const App = () => (
-  <FlatList />
+  <FlatsList />
 );

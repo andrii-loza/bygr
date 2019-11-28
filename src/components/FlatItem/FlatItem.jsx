@@ -21,7 +21,7 @@ class FlatItem extends React.PureComponent {
     }
   };
 
-  formatDate = (date, usage) => {
+  formatDate = (date, format) => {
     const split = date.split(/\D+/);
     const dateFormat = new Date(Date.UTC(split[0], --split[1], split[2], split[3], split[4], split[5], split[6]));
 
@@ -30,7 +30,7 @@ class FlatItem extends React.PureComponent {
     if (day < 10) day = '0' + day;
     if (month < 10) month = '0' + month;
 
-    switch (usage) {
+    switch (format) {
       case TimeFormat.LastLogin: {
         return `${day}.${month}.${dateFormat.getUTCFullYear()} ${dateFormat.getHours()}:${dateFormat.getMinutes()}`
       }
@@ -43,7 +43,7 @@ class FlatItem extends React.PureComponent {
   };
 
   render() {
-    const { data } = this.props;
+    const { flat } = this.props;
 
     return (
       <div className="flat-item">
@@ -51,14 +51,14 @@ class FlatItem extends React.PureComponent {
         <div className="item-info d-flex">
           <div className="xs-width">
             <div className="info-subtitle">Floor</div>
-            <div>{data.floor}</div>
+            <div>{flat.floor}</div>
             <div className="info-subtitle">Unit type</div>
-            <div>{data.type}</div>
+            <div>{flat.type}</div>
             <div className="info-subtitle">Type</div>
-            <div>{data['layoutType']}</div>
+            <div>{flat.layoutType}</div>
           </div>
           {
-            data.buyers.map((item, index) => (
+            flat.buyers.map((item, index) => (
               <div key={index}  className="sm-width">
                 <div className="info-subtitle">
                   Buyer {index + 1}
@@ -74,10 +74,10 @@ class FlatItem extends React.PureComponent {
           <div  className="sm-width">
             <div className="info-subtitle">Last login</div>
             {
-              data.buyers.map((item, index) =>
+              flat.buyers.map((item, index) =>
                 <div key={index}>
                   <div>{item.displayName}</div>
-                  <div>{this.formatDate(item['lastVisitDate'], TimeFormat.LastLogin)}</div>
+                  <div>{this.formatDate(item.lastVisitDate, TimeFormat.LastLogin)}</div>
                 </div>
               )
             }
@@ -85,10 +85,10 @@ class FlatItem extends React.PureComponent {
           <div  className="lg-width">
             <div className="info-subtitle">Deadlines</div>
             {
-              data.deadlines.map((item, index) =>
+              flat.deadlines.map((item, index) =>
                 <div className="d-flex align-center" key={index}>
-                  <div>Deadline {index + 1} ({this.formatDate(item['Date'], TimeFormat.DeadlineDate)}) :</div>
-                  <div className="info-status" style={this.getDeadlineStatusBgColor(item['Status'])}/>
+                  <div>Deadline {index + 1} ({this.formatDate(item.Date, TimeFormat.DeadlineDate)}) :</div>
+                  <div className="info-status" style={this.getDeadlineStatusBgColor(item.Status)}/>
                   <div>{item.Status}</div>
                 </div>
               )
