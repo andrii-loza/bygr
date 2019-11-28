@@ -45,7 +45,7 @@ class FlatItem extends React.PureComponent {
       <div className="flat-item">
         <div className="item-title">Building A - H0102</div>
         <div className="item-info d-flex">
-          <div style={{width: '10%'}}>
+          <div className="xs-width">
             <div className="info-subtitle">Floor</div>
             <div>{data.floor}</div>
             <div className="info-subtitle">Unit type</div>
@@ -55,7 +55,7 @@ class FlatItem extends React.PureComponent {
           </div>
           {
             data.buyers.map((item, index) => (
-              <div key={index} style={{width: '15%'}}>
+              <div key={index}  className="sm-width">
                 <div className="info-subtitle">
                   Buyer {index + 1}
                 </div>
@@ -68,7 +68,7 @@ class FlatItem extends React.PureComponent {
               </div>
             ))
           }
-          <div style={{width: '25%'}}>
+          <div  className="sm-width">
             <div className="info-subtitle">Last login</div>
             {
               data.buyers.map((item, index) =>
@@ -79,7 +79,7 @@ class FlatItem extends React.PureComponent {
               )
             }
           </div>
-          <div style={{width: '35%'}}>
+          <div  className="lg-width">
             <div className="info-subtitle">Deadlines</div>
             {
               data.deadlines.map((item, index) =>

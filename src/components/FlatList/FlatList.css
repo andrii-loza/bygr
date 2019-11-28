@@ -1,4 +1,29 @@
-.flat-list {padding: 18px 40px}
-.select{width: 15%}
-.list{padding-top: 20px}
-.css-1okebmr-indicatorSeparator{width: 0px !important}
+.flat-list {
+    padding: 10px;
+}
+
+.select {
+    width: 100%
+}
+
+.list {
+    padding-top: 20px
+}
+
+.css-1okebmr-indicatorSeparator {
+    width: 0 !important;
+}
+
+@media (min-width: 576px) {
+    .select {
+        width: 50%
+    }
+}
+@media (min-width: 992px) {
+    .flat-list {
+        padding: 18px 40px;
+    }
+    .select {
+        width: 15%
+    }
+}
