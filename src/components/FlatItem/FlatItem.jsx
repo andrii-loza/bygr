@@ -10,10 +10,10 @@ class FlatItem extends React.PureComponent {
       case DeadlineStatusEnum.Sent: {
         return {backgroundColor: '#B8DE91'}
       }
-      case DeadlineStatusEnum.InProgress: {
+      case DeadlineStatusEnum.NotSent: {
         return {backgroundColor: '#FB9683'}
       }
-      case DeadlineStatusEnum.NotSent: {
+      case DeadlineStatusEnum.InProgress: {
         return {backgroundColor: '#FBD277'}
       }
     }
