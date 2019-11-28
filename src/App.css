@@ -2,45 +2,9 @@
     color: #1F222A;
     font-family: Roboto, sans-serif;
 }
-
-.flat-list {
-    padding: 18px 40px;
-}
-
-.flat-item {
-    width: 1203px;
-}
-
-.flat-item:last-child {
-    margin-bottom: 15px;
-}
-
-.flat-item:not(:last-child) {
-    margin-bottom: 38px;
-}
-
-.item-title {
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 1.16;
-    margin-bottom: 10px;
-}
-
-.item-info {
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.15);
-    border-radius: 4px;
-    padding: 15px 23px;
+.d-flex {
     display: flex;
-    font-size: 14px;
-    line-height: 1.7;
 }
-
-.item-info > div {
-    margin-right: 15px;
-}
-
-.info-subtitle {
-    color: #747474;
-    font-size: 12px;
-    line-height: 2;
+.align-center {
+    align-items: center;
 }

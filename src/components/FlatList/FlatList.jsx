@@ -12,6 +12,12 @@ class FlatList extends React.Component {
     selectedOption: null,
   };
 
+  // const options = [
+  //   { value: 'chocolate', label: 'Chocolate' },
+  //   { value: 'strawberry', label: 'Strawberry' },
+  //   { value: 'vanilla', label: 'Vanilla' }
+  // ]
+
   componentDidMount() {
     this.getData();
   }
