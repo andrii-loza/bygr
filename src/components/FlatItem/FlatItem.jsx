@@ -1,7 +1,5 @@
 import React from "react";
-
 import "./FlatItem.css";
-
 import { DeadlineStatusEnum, TimeFormat } from "../../enums";
 
 class FlatItem extends React.PureComponent {

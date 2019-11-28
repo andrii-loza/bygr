@@ -37,8 +37,8 @@ class FlatsList extends React.Component {
     let url;
     if(this.state.env === window.location.href) url = '/data';
     else {
-      const splited = window.location.href.split('/');
-      url = '/buyer-info/' + splited[splited.length - 1];
+      const split = window.location.href.split('/');
+      url = '/buyer-info/' + split[split.length - 1];
     }
 
     await fetch(url)
